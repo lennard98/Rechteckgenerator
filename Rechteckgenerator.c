@@ -1,37 +1,95 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <unistd.h>
 
-
-int main()
+int Rechteckgenerator(int Periodenanzahl, int Pulsweite, int Amplitude, int i, int j, int k)
 {
-    
-int Periodenanzahl = 10;
-int Pulsweite = 5;
-int Amplitude =1;
+    FILE* txt;
+    txt = fopen("Rechteck.txt","w");
 
-int i;
-int j;
-int k;
-	
-	FILE* txt;
-	txt = fopen("Rechteck.txt","w");
-
-    for (i=0;i<Periodenanzahl;i++)
+    for (i=0; i<Periodenanzahl; i++)
     {
-			
-        for (j=0;j<Pulsweite;j++)
-        {
-	            
-            	fprintf(txt,"%i\n",Amplitude);
-		
-        }
-        for (k=0;k<Pulsweite;k++)
-        {
-		
-            	fprintf(txt,"%i\n",0);
 
-        }    
-	
+        for (j=0; j<Pulsweite; j++)
+        {
+
+            fprintf(txt,"%i\n",Amplitude);
+
+        }
+        for (k=0; k<Pulsweite; k++)
+        {
+
+            fprintf(txt,"%i\n",0);
+
+        }
+
     }
     fclose(txt);
+
 }
+
+int main(int argc, char* argv[])
+{
+    int Periodenanzahl = 10;
+    int Pulsweite = 5;
+    int Amplitude =1;
+    int i;
+    int j;
+    int k;
+    int c;
+
+    if ( argc <2)
+    {
+        printf("Bitte -h nutzen \n");
+        return 0;
+    }
+
+    while ((c = getopt (argc, argv, "hf1:"))!= 1)
+        switch (c)
+        {
+        case 'h':
+            printf("Um die Periodenanzahl, Pulsweite und Amplitude einzugeben nutzen Sie bitte den Schalter -f. Die Rück			gabe wird in die Datei Rechteck.txt ausgegeben \n");
+            exit(0);
+
+        case 'f':
+            printf("Bitte Periodenanzahl als positive Ganzzahl eingeben.\n");
+            scanf("%i",&Periodenanzahl);
+
+            printf("Bitte Pulsweite als positive Ganzzahl eingeben.\n");
+            scanf("%i",&Pulsweite);
+
+            printf("Bitte Amplitude als positive Ganzzahl eingeben.\n");
+            scanf("%i",&Amplitude);
+
+            if (Periodenanzahl < 65535 && Pulsweite <65535 && Amplitude < 65535)
+            {
+                printf("Eingegebene Werte sind \n Periodenanzahl %i \n Pulsweite %i \n Amplitude  %i \n",Periodenanzahl,Pulsweite,Amplitude);
+
+                Rechteckgenerator(Periodenanzahl,Pulsweite,Amplitude,i,j,k);
+            }
+
+            else
+            {
+                printf("Bitte Eingabe nochmals versuchen oder die Hilfe -h nutzen.\n");
+
+                printf("Bitte Periodenanzahl als positive Ganzzahl eingeben.\n");
+                scanf("%i",&Periodenanzahl);
+
+                printf("Bitte Pulsweite als positive Ganzzahl eingeben.\n");
+                scanf("%i",&Pulsweite);
+
+                printf("Bitte Amplitude als positive Ganzzahl eingeben.\n");
+                scanf("%i",&Amplitude);
+            }
+
+
+            return 0;
+        case '?':
+            printf("Bitte -h benutzen!\n");
+            exit(1);
+
+        }
+}
+
+
+

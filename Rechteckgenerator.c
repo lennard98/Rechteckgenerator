@@ -30,9 +30,9 @@ int Rechteckgenerator(int Periodenanzahl, int Pulsweite, int Amplitude, int i, i
 
 int main(int argc, char* argv[])
 {
-    int Periodenanzahl = 10;
-    int Pulsweite = 5;
-    int Amplitude =1;
+    int Periodenanzahl;
+    int Pulsweite;
+    int Amplitude;
     int i;
     int j;
     int k;

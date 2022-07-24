@@ -23,7 +23,7 @@ int main(int argc, char* argv[])
         switch (c)
         {
         case 'h':
-            printf("Um die Periodenanzahl, Pulsweite und Amplitude einzugeben nutzen Sie bitte den Schalter -f. Die Rück			gabe wird in die Datei Rechteck.txt ausgegeben \n");
+            printf("Um die Periodenanzahl, Pulsweite und Amplitude einzugeben nutzen Sie bitte den Schalter -f. Die Rückgabe wird in die Datei Rechteck.txt ausgegeben \n");
             exit(0);
 
         case 'f':

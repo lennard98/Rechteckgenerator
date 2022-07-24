@@ -1,4 +1,6 @@
 #include <stdio.h>
+#include <stdlib.h>
+
 
 int main()
 {
@@ -10,16 +12,26 @@ int Amplitude =1;
 int i;
 int j;
 int k;
+	
+	FILE* txt;
+	txt = fopen("Rechteck.txt","w");
 
     for (i=0;i<Periodenanzahl;i++)
     {
+			
         for (j=0;j<Pulsweite;j++)
         {
-            printf("%i \n",Amplitude);
+	            
+            	fprintf(txt,"%i\n",Amplitude);
+		
         }
         for (k=0;k<Pulsweite;k++)
         {
-            printf("0 \n");
+		
+            	fprintf(txt,"%i\n",0);
+
         }    
+	
     }
+    fclose(txt);
 }
